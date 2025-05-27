@@ -30,16 +30,7 @@ $base_path = '/ucms';
                         <i class="fas fa-list"></i> My Complaints
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/student/messages.php">
-                        <i class="fas fa-envelope"></i> Messages
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/student/notifications.php">
-                        <i class="fas fa-bell"></i> Notifications
-                    </a>
-                </li>
+             
                 <li class="nav-item">
                     <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/student/profile.php">
                         <i class="fas fa-user"></i> Profile
@@ -71,18 +62,8 @@ $base_path = '/ucms';
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/faculty/notifications.php">
-                        <i class="fas fa-bell"></i> Notifications
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/faculty/profile.php">
                         <i class="fas fa-user"></i> Profile
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/faculty/help.php">
-                        <i class="fas fa-question-circle"></i> Help Center
                     </a>
                 </li>
             </ul>
@@ -101,18 +82,8 @@ $base_path = '/ucms';
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/admin/assign_complaints.php">
-                        <i class="fas fa-user-plus"></i> Assign Complaints
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/admin/manage_users.php">
                         <i class="fas fa-users"></i> Manage Users
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/admin/categories.php">
-                        <i class="fas fa-tags"></i> Categories
                     </a>
                 </li>
                 <li class="nav-item">
@@ -120,17 +91,7 @@ $base_path = '/ucms';
                         <i class="fas fa-chart-bar"></i> Reports
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/admin/settings.php">
-                        <i class="fas fa-cog"></i> Settings
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/admin/announcements.php">
-                        <i class="fas fa-bullhorn"></i> Announcements
-                    </a>
-                </li>
-                <li class="nav-item">
+               <li class="nav-item">
                     <a class="nav-link text-white" href="<?php echo $base_path; ?>/dashboard/admin/profile.php">
                         <i class="fas fa-user"></i> Profile
                     </a>
