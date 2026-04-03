@@ -203,16 +203,23 @@ $result = $stmt->get_result();
                     <div class="complaint-card">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
+<<<<<<< HEAD
                                 <h5 class="complaint-title"><?php echo htmlspecialchars($complaint['subject']); ?></h5>
                                  <p class="mb-1"> Urgency Level: 
                                         <?php echo htmlspecialchars($complaint['urgency_level']); ?>
                                     </p>
+=======
+                                <h5 class="complaint-title"><?php echo htmlspecialchars($complaint['title']); ?></h5>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                                 <div class="complaint-meta">
                                     <p class="mb-1">
                                         <i class="fas fa-building"></i>
                                         <?php echo htmlspecialchars($complaint['department_name']); ?>
                                     </p>
+<<<<<<< HEAD
                                      
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                                     <p class="mb-0">
                                         <i class="fas fa-clock"></i>
                                         Submitted on <?php echo date('F j, Y', strtotime($complaint['created_at'])); ?>

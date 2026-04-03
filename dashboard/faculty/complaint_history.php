@@ -11,6 +11,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'faculty') {
 $faculty_id = $_SESSION['user_id'];
 $base_path = '/ucms';
 
+<<<<<<< HEAD
 // // Get complaint history
 // $sql = "SELECT c.*, u.name as student_name, d.name as department_name,
 //         fc.status as faculty_status, fc.comment as faculty_comment, fc.created_at as action_date
@@ -26,6 +27,23 @@ $base_path = '/ucms';
 // $stmt->execute();
 // $result = $stmt->get_result();
 // ?>
+=======
+// Get complaint history
+$sql = "SELECT c.*, u.name as student_name, d.name as department_name,
+        fc.status as faculty_status, fc.comment as faculty_comment, fc.created_at as action_date
+        FROM complaints c 
+        JOIN users u ON c.student_id = u.id 
+        JOIN departments d ON c.department_id = d.id 
+        JOIN faculty_complaints fc ON c.id = fc.complaint_id
+        WHERE fc.faculty_id = ? 
+        ORDER BY fc.created_at DESC";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $faculty_id);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
 <!DOCTYPE html>
 <html lang="en">

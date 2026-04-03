@@ -67,6 +67,7 @@ try {
     
     $recent_result = $stmt->get_result();
     
+<<<<<<< HEAD
     // // Get recent notifications
     // $notif_sql = "SELECT * FROM notifications 
     //               WHERE user_id = ? 
@@ -86,6 +87,27 @@ try {
     // }
     
     // $notif_result = $stmt->get_result();
+=======
+    // Get recent notifications
+    $notif_sql = "SELECT * FROM notifications 
+                  WHERE user_id = ? 
+                  ORDER BY created_at DESC 
+                  LIMIT 5";
+    
+    if (!$stmt = $conn->prepare($notif_sql)) {
+        throw new Exception("Error preparing notifications query: " . $conn->error);
+    }
+    
+    if (!$stmt->bind_param("i", $student_id)) {
+        throw new Exception("Error binding notifications parameters: " . $stmt->error);
+    }
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Error executing notifications query: " . $stmt->error);
+    }
+    
+    $notif_result = $stmt->get_result();
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
     
 } catch (Exception $e) {
     // Log the error and display a user-friendly message
@@ -106,6 +128,7 @@ $base_path = '/ucms';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $base_path; ?>/assets/css/style.css">
 </head>
+<<<<<<< HEAD
 <style>
     body {
     background-color: #f3f4f6;
@@ -176,6 +199,8 @@ $base_path = '/ucms';
 }
 
     </style>
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 <body>
     <?php include '../../includes/header.php'; ?>
     <?php include '../../includes/sidebar.php'; ?>
@@ -187,7 +212,11 @@ $base_path = '/ucms';
             <!-- Statistics Cards -->
             <div class="row mb-4">
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card  ">
+=======
+                    <div class="card bg-primary text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">Total Complaints</h5>
                             <h2><?php echo $stats['total']; ?></h2>
@@ -195,7 +224,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card ">
+=======
+                    <div class="card bg-warning text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">Pending</h5>
                             <h2><?php echo $stats['pending']; ?></h2>
@@ -203,7 +236,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card  ">
+=======
+                    <div class="card bg-info text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">In Progress</h5>
                             <h2><?php echo $stats['in_progress']; ?></h2>
@@ -211,7 +248,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card ">
+=======
+                    <div class="card bg-success text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">Resolved</h5>
                             <h2><?php echo $stats['resolved']; ?></h2>
@@ -226,7 +267,11 @@ $base_path = '/ucms';
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">Recent Complaints</h5>
+<<<<<<< HEAD
                             <a href="submit_complaint.php" class="btn  b sm">Submit New Complaint</a>
+=======
+                            <a href="submit_complaint.php" class="btn btn-primary btn-sm">Submit New Complaint</a>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         </div>
                         <div class="card-body">
                             <?php if ($recent_result && $recent_result->num_rows > 0): ?>
@@ -282,7 +327,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <!-- Recent Notifications
+=======
+                <!-- Recent Notifications -->
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
@@ -306,7 +355,11 @@ $base_path = '/ucms';
                             <?php endif; ?>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div> -->
+=======
+                </div>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
             </div>
         </div>
     </div>

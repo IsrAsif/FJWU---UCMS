@@ -2,6 +2,7 @@
 session_start();
 require_once '../includes/db.php';
 
+<<<<<<< HEAD
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $conn->real_escape_string($_POST['name']);
     $email = $conn->real_escape_string($_POST['email']);
@@ -34,17 +35,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             $error = "Error: " . $conn->error;
+=======
+if (isset($_SESSION['user_id'])) {
+    header("Location: /ucms/dashboard/");
+    exit();
+}
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $role = 'student'; // Default role for registration
+
+    if (empty($name) || empty($email) || empty($password) || empty($confirm_password)) {
+        $error = "All fields are required.";
+    } elseif ($password !== $confirm_password) {
+        $error = "Passwords do not match.";
+    } elseif (strlen($password) < 6) {
+        $error = "Password must be at least 6 characters long.";
+    } else {
+        // Check if email already exists
+        $check_sql = "SELECT id FROM users WHERE email = ?";
+        $check_stmt = $conn->prepare($check_sql);
+        $check_stmt->bind_param("s", $email);
+        $check_stmt->execute();
+        $check_result = $check_stmt->get_result();
+
+        if ($check_result->num_rows > 0) {
+            $error = "Email already exists.";
+        } else {
+            // Hash password and insert user
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssss", $name, $email, $hashed_password, $role);
+
+            if ($stmt->execute()) {
+                $success = "Registration successful! You can now login.";
+                // Clear form data
+                $_POST = array();
+            } else {
+                $error = "Error registering user: " . $conn->error;
+            }
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
         }
     }
 }
 ?>
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
     <title>Register</title>
     <link rel="stylesheet" href="../assets/css/style.css">
       <style>
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - UCMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
         :root {
             --primary-color: #1B4D3E;
             --secondary-color: #2E7D32;
@@ -65,13 +124,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 20px;
         }
 
+<<<<<<< HEAD
           .login-container {
+=======
+        .register-container {
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
         .register-card {
             background: white;
             border-radius: 20px;
@@ -118,6 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             max-width: 400px;
         }
 
+<<<<<<< HEAD
    .register-form {
     flex: 1;
     padding: 60px;
@@ -126,6 +193,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     justify-content: center;
 }
 
+=======
+        .register-form {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
         .form-title {
             font-size: 2rem;
@@ -134,6 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-weight: 700;
         }
 
+<<<<<<< HEAD
     .form-floating {
     width: 100%;
 }
@@ -148,6 +225,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     border-radius: 10px;
     border: 1px solid #e3e6f0;
 }
+=======
+        .form-floating {
+            margin-bottom: 20px;
+        }
+
+        .form-floating > .form-control {
+            padding: 1rem 0.75rem;
+            height: calc(3.5rem + 2px);
+            line-height: 1.25;
+            border-radius: 10px;
+            border: 1px solid #e3e6f0;
+        }
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
         .form-floating > label {
             padding: 1rem 0.75rem;
@@ -158,6 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 0 0 0.2rem rgba(27, 77, 62, 0.1);
         }
 
+<<<<<<< HEAD
      .btn-register {
     width: 100%;
     background-color: rgb(6, 77, 49);
@@ -178,6 +269,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     cursor: pointer;
 }
 
+=======
+        .btn-register {
+            background: var(--primary-color);
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-register:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
         .login-link {
             text-align: center;
@@ -218,9 +325,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+<<<<<<< HEAD
 
 <body>
     <div class="login-container">
+=======
+<body>
+    <div class="register-container">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
         <div class="register-card">
             <div class="register-image">
                 <h2>Join FJWU</h2>
@@ -229,6 +341,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="register-form">
                 <h2 class="form-title">Register</h2>
                 
+<<<<<<< HEAD
             <?php if(isset($error)): ?>
                 <div class="alert alert-danger"><?php echo $error; ?></div>
             <?php endif; ?>
@@ -263,14 +376,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
              <div class="login-link">
+=======
+                <?php if ($error): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo htmlspecialchars($error); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($success): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo htmlspecialchars($success); ?>
+                    </div>
+                <?php endif; ?>
+
+                <form method="POST" action="">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required
+                               value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
+                        <label for="name">Full Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required
+                               value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                        <label for="email">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                        <label for="confirm_password">Confirm Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-register w-100">
+                        <i class="fas fa-user-plus me-2"></i>Register
+                    </button>
+                </form>
+
+                <div class="login-link">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                     Already have an account? <a href="login.php">Login here</a>
                 </div>
             </div>
         </div>
     </div>
 
+<<<<<<< HEAD
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad

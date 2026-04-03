@@ -78,6 +78,7 @@ $base_path = '/ucms';
     <link rel="stylesheet" href="<?php echo $base_path; ?>/assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<<<<<<< HEAD
 
 <style>
   /* General body and container */
@@ -236,13 +237,20 @@ $base_path = '/ucms';
   }
 </style>
 
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 <body>
 <?php include '../../includes/header.php'; ?>
 <?php include '../../includes/sidebar.php'; ?>
 <div class="main-content">
+<<<<<<< HEAD
     <div class=" mt-4">
         <h3 class="headingcss">Student Complaint Form</h3>
 
+=======
+    <div class="container mt-4">
+        <h3>Student Complaint Form</h3>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
         <?php if ($success): ?>
             <div class="alert alert-success">Complaint submitted successfully!</div>
         <?php elseif ($error): ?>

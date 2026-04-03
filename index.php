@@ -1,5 +1,6 @@
 <?php
 session_start();
+<<<<<<< HEAD
 $base_path = '/ucms';
 ?>
 <!DOCTYPE html>
@@ -105,6 +106,21 @@ $base_path = '/ucms';
   }
 
     :root {
+=======
+require_once 'includes/db.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FJWU Complaint Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
             --primary-color: #1B4D3E;
             --secondary-color: #2E7D32;
             --accent-color: #4CAF50;
@@ -272,11 +288,24 @@ $base_path = '/ucms';
         }
 
         .footer-links a {
+<<<<<<< HEAD
        
             text-decoration: none; 
             transition: all 0.3s ease;
         }
  
+=======
+            color: var(--text-light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
         @media (max-width: 768px) {
             .hero-title {
@@ -287,6 +316,7 @@ $base_path = '/ucms';
                 font-size: 1.2rem;
             }
         }
+<<<<<<< HEAD
         
   @media (max-width: 768px) {
     .hero h1 {
@@ -427,6 +457,66 @@ $base_path = '/ucms';
   </div>
 
    <!-- Features Section -->
+=======
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">
+                <img src="https://th.bing.com/th/id/OIP.80_ByCfld7QYhQWVYgm_ggAAAA?cb=iwc2&rs=1&pid=ImgDetMain" alt="FJWU Logo">
+                FJWU Complaint System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard/">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="auth/logout.php">Logout</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="auth/login.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="auth/register.php">Register</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Welcome to FJWU Complaint Management System</h1>
+            <p class="hero-subtitle">Your voice matters. Submit, track, and resolve complaints efficiently.</p>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <a href="auth/register.php" class="btn btn-cta">Get Started</a>
+            <?php else: ?>
+                <a href="dashboard/" class="btn btn-cta">Go to Dashboard</a>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
     <section class="features-section" id="features">
         <div class="container">
             <div class="row">
@@ -469,6 +559,7 @@ $base_path = '/ucms';
             <?php if (!isset($_SESSION['user_id'])): ?>
                 <a href="auth/register.php" class="btn btn-cta">Register Now</a>
             <?php else: ?>
+<<<<<<< HEAD
                 <?php 
                   $dashboard_path = $base_path . '/dashboard/' . $_SESSION['role'] . '/index.php';
                   if (file_exists($_SERVER['DOCUMENT_ROOT'] . $dashboard_path)) {
@@ -481,6 +572,9 @@ $base_path = '/ucms';
                     Dashboard not available for your role (<?php echo htmlspecialchars($_SESSION['role']); ?>)
                   </div>
                 <?php } ?>
+=======
+                <a href="dashboard/" class="btn btn-cta">Go to Dashboard</a>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
             <?php endif; ?>
         </div>
     </section>
@@ -513,7 +607,13 @@ $base_path = '/ucms';
         </div>
     </footer>
 
+<<<<<<< HEAD
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad

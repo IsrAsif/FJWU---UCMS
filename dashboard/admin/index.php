@@ -61,12 +61,21 @@ $recent_sql = "SELECT c.*, d.name as department_name,
                LIMIT 5";
 $recent_result = $conn->query($recent_sql);
 
+<<<<<<< HEAD
 // // Get recent 
 // $notif_sql = "SELECT * FROM notifications 
 //               WHERE type = 'system' 
 //               ORDER BY created_at DESC 
 //               LIMIT 5";
 // $notif_result = $conn->query($notif_sql);
+=======
+// Get recent notifications
+$notif_sql = "SELECT * FROM notifications 
+              WHERE type = 'system' 
+              ORDER BY created_at DESC 
+              LIMIT 5";
+$notif_result = $conn->query($notif_sql);
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
 $base_path = '/ucms';
 ?>
@@ -81,6 +90,7 @@ $base_path = '/ucms';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $base_path; ?>/assets/css/style.css">
 </head>
+<<<<<<< HEAD
 <style>
     .stat-btn {
         background-color: white !important;
@@ -115,6 +125,8 @@ $base_path = '/ucms';
 
 
 
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 <body>
     <?php include '../../includes/header.php'; ?>
     <?php include '../../includes/sidebar.php'; ?>
@@ -154,6 +166,7 @@ $base_path = '/ucms';
                         </div>
                     </button>
                 </div>
+<<<<<<< HEAD
              <div class="col-md-2">
     <button type="button" class="btn btn-dark w-100 text-start stat-btn mb-2" data-detail="departments">
         <div class="card-body p-2">
@@ -166,6 +179,20 @@ $base_path = '/ucms';
                     <button type="button" class="btn btn-warning w-100 text-start stat-btn mb-2" data-detail="categories">
                         <div class="card-body p-2">
                             <h5 class="card-title mb-1">Total Categories</h5>
+=======
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-dark w-100 text-start stat-btn mb-2" data-detail="departments">
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-1">Departments</h5>
+                            <h2 class="mb-0"><?php echo $stats['total_departments']; ?></h2>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning w-100 text-start stat-btn mb-2" data-detail="categories">
+                        <div class="card-body p-2">
+                            <h5 class="card-title mb-1">Categories</h5>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                             <h2 class="mb-0"><?php echo $stats['total_categories']; ?></h2>
                         </div>
                     </button>
@@ -415,7 +442,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <!-- System Notifications
+=======
+                <!-- System Notifications -->
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
@@ -439,7 +470,11 @@ $base_path = '/ucms';
                             <?php endif; ?>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div> -->
+=======
+                </div>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
             </div>
         </div>
     </div>

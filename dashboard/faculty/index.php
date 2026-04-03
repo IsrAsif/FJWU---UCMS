@@ -38,12 +38,21 @@ $recent_sql = "SELECT c.*, d.name as department_name, u.name as student_name
                LIMIT 5";
 $recent_result = $conn->query($recent_sql);
 
+<<<<<<< HEAD
 // // Get recent notifications
 // $notif_sql = "SELECT * FROM notifications 
 //               WHERE user_id = $faculty_id 
 //               ORDER BY created_at DESC 
 //               LIMIT 5";
 // $notif_result = $conn->query($notif_sql);
+=======
+// Get recent notifications
+$notif_sql = "SELECT * FROM notifications 
+              WHERE user_id = $faculty_id 
+              ORDER BY created_at DESC 
+              LIMIT 5";
+$notif_result = $conn->query($notif_sql);
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 
 $base_path = '/ucms';
 ?>
@@ -58,6 +67,7 @@ $base_path = '/ucms';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $base_path; ?>/assets/css/style.css">
 </head>
+<<<<<<< HEAD
 
 <style>
     body {
@@ -205,6 +215,8 @@ $base_path = '/ucms';
 
 
 
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
 <body>
     <?php include '../../includes/header.php'; ?>
     <?php include '../../includes/sidebar.php'; ?>
@@ -216,7 +228,11 @@ $base_path = '/ucms';
             <!-- Statistics Cards -->
             <div class="row mb-4">
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card ">
+=======
+                    <div class="card bg-primary text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">Total Assigned</h5>
                             <h2><?php echo $stats['total']; ?></h2>
@@ -224,7 +240,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card ">
+=======
+                    <div class="card bg-warning text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">Pending</h5>
                             <h2><?php echo $stats['pending']; ?></h2>
@@ -232,7 +252,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card e">
+=======
+                    <div class="card bg-info text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">In Progress</h5>
                             <h2><?php echo $stats['in_progress']; ?></h2>
@@ -240,7 +264,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <div class="card    ">
+=======
+                    <div class="card bg-success text-white">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         <div class="card-body">
                             <h5 class="card-title">Resolved</h5>
                             <h2><?php echo $stats['resolved']; ?></h2>
@@ -255,7 +283,11 @@ $base_path = '/ucms';
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">Recent Assigned Complaints</h5>
+<<<<<<< HEAD
                             <a href="assigned_complaints.php" style="background-color:rgb(7, 80, 64); color: #fff; padding: 10px; border-radius: 5px; cursor: pointer;" class="btn  btn-sm">View All</a>
+=======
+                            <a href="assigned_complaints.php" class="btn btn-primary btn-sm">View All</a>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                         </div>
                         <div class="card-body">
                             <?php if ($recent_result->num_rows > 0): ?>
@@ -278,7 +310,11 @@ $base_path = '/ucms';
                                                     <td><?php echo htmlspecialchars($complaint['student_name']); ?></td>
                                                     <td><?php echo htmlspecialchars($complaint['department_name']); ?></td>
                                                     <td>
+<<<<<<< HEAD
                                                         <span style="background-color:rgb(7, 80, 64); color: #fff; padding: 10px; border-radius: 5px; cursor: pointer;" class="badge bg-<?php 
+=======
+                                                        <span class="badge bg-<?php 
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                                                             echo $complaint['status'] === 'pending' ? 'warning' : 
                                                                 ($complaint['status'] === 'in_progress' ? 'info' : 
                                                                 ($complaint['status'] === 'resolved' ? 'success' : 'secondary')); 
@@ -289,14 +325,21 @@ $base_path = '/ucms';
                                                     <td><?php echo date('M d, Y', strtotime($complaint['created_at'])); ?></td>
                                                     <td>
                                                         <a href="view_complaint.php?id=<?php echo $complaint['id']; ?>" 
+<<<<<<< HEAD
                                                         style="background-color:rgb(7, 80, 64); color: #fff; padding: 10px; border-radius: 5px; cursor: pointer;"  
+=======
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                                                            class="btn btn-sm btn-primary">
                                                             View
                                                         </a>
                                                         <?php if ($complaint['status'] !== 'resolved'): ?>
                                                             <a href="respond_complaint.php?id=<?php echo $complaint['id']; ?>" 
+<<<<<<< HEAD
                                                             style="background-color:rgb(7, 80, 64); color: #fff; padding: 10px; border-radius: 5px; cursor: pointer;" 
                                                                class="btn  ">
+=======
+                                                               class="btn btn-sm btn-success">
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                                                                 Respond
                                                             </a>
                                                         <?php endif; ?>
@@ -313,7 +356,11 @@ $base_path = '/ucms';
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <!-- Recent Notifications
+=======
+                <!-- Recent Notifications -->
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
@@ -337,7 +384,11 @@ $base_path = '/ucms';
                             <?php endif; ?>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div> -->
+=======
+                </div>
+>>>>>>> e3d9346d0831c0187ca22a83d2690412c6ce90ad
             </div>
         </div>
     </div>
